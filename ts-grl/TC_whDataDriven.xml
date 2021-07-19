@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testCase id="dc4ed7a2-9f72-43e7-8247-c9d9415395b6" discardOkResults="false" failOnError="false" failTestCaseOnErrors="true" keepSession="true" name="TC_whDataDriven" searchProperties="true" timeout="0" maxResults="20" wsrmEnabled="false" wsrmVersion="1.0" wsrmAckTo="" zephyrTestName="" zephyrTestId="" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="IncludeOverview">true</con:setting>
+    <con:setting id="IncludeResults">true</con:setting>
+    <con:setting id="FlowLayout">true</con:setting>
+    <con:setting id="ErrorDetails">true</con:setting>
+    <con:setting id="IncludeCoverage">true</con:setting>
+    <con:setting id="dc4ed7a2-9f72-43e7-8247-c9d9415395b6fileName">TC_whDataDriven</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:testStep type="datasource" name="TestStep_DataSource_ExcelFile_WHDataDriven" id="9179a9ea-049a-4dee-bd53-b3a95beae553">
+    <con:settings/>
+    <con:config xsi:type="con:DataSourceStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:dataSource type="Excel">
+        <con:configuration>
+          <file>${#Project#SQAA_Exec_Folder_DataFiles}/whDataDriven.xls</file>
+          <worksheet>Unique_whdd</worksheet>
+          <cell>A2</cell>
+          <ignoreEmpty>false</ignoreEmpty>
+          <evaluateFormulas>false</evaluateFormulas>
+        </con:configuration>
+      </con:dataSource>
+      <con:shared>true</con:shared>
+      <con:restartShared>true</con:restartShared>
+      <con:property>POLICYNO</con:property>
+      <con:property>ABBREV</con:property>
+      <con:property>DESCRIPTION</con:property>
+      <con:property>DPDSK</con:property>
+      <con:property>FOLLOWDATE1</con:property>
+      <con:property>FOLLOWDATE2</con:property>
+      <con:property>FOLLOWDATE3</con:property>
+      <con:property>File_DateofNIGO</con:property>
+      <con:property>REASON</con:property>
+      <con:property>RECEIVEDDATE</con:property>
+      <con:property>File_NIGOStatus</con:property>
+      <con:property>File_RemediationPlan</con:property>
+      <con:property>REQCOMMENT2</con:property>
+      <con:property>SEQNO</con:property>
+      <con:property>File_PersonHandlingCase</con:property>
+      <con:completeLastOperation>true</con:completeLastOperation>
+      <con:restartOnRun>true</con:restartOnRun>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="restrequest" name="TestStep_rqstPostGeneralRequirementStatusInquiry" id="4e22914b-0d38-4853-b6a0-ac73c545d9df">
+    <con:settings/>
+    <con:config service="https://lafwasq:9448" resourcePath="/jkladsjkfldjsalkfda" methodName="GeneralRequirementStatusInquiry" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <con:restRequest name="TestStep_rqstPostGeneralRequirementStatusInquiry" id="77638a8e-0ebe-45e0-a9a7-901de99b50e9" mediaType="application/json" postQueryString="false">
+        <con:settings>
+          <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+        </con:settings>
+        <con:endpoint>fdsaifdsajkf</con:endpoint>
+        <con:request>{\r
+   "polNumber" : "${TestStep_DataSource_ExcelFile_WHDataDriven#POLICYNO}"\r
+}</con:request>
+        <con:originalUri>https://lafwasq/nigodetailsservice/svc/GeneralRequirementStatusInquiry</con:originalUri>
+        <con:assertion type="Valid HTTP Status Codes" id="6419f363-5522-4522-b4e5-b99ba0b6a2e7" name="Valid HTTP Status Codes">
+          <con:settings/>
+          <con:configuration>
+            <codes>200</codes>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="de092b56-d1a3-430c-8e67-26ebcb873340" name="Match content of [DateofNIGO]">
+          <con:configuration>
+            <path>$['RequirementInfo'][0]['DateofNIGO']</path>
+            <content>${TestStep_DataSource_ExcelFile_WHDataDriven#File_DateofNIGO}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="4498c005-70d3-4756-848f-6353890cf591" name="Match content of [NIGOStatus]">
+          <con:configuration>
+            <path>$['RequirementInfo'][0]['NIGOStatus']</path>
+            <content>${TestStep_DataSource_ExcelFile_WHDataDriven#File_NIGOStatus}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="569ccdda-dcd2-473b-a4a9-076717170f6b" name="Match content of [PersonHandlingCase]">
+          <con:configuration>
+            <path>$['RequirementInfo'][0]['PersonHandlingCase']</path>
+            <content>${TestStep_DataSource_ExcelFile_WHDataDriven#File_PersonHandlingCase}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:assertion type="JsonPath Match" id="10dcef1b-f5f3-4a1f-849c-fbce7c67db43" name="Match content of [RemediationPlan]">
+          <con:configuration>
+            <path>$['RequirementInfo'][0]['RemediationPlan']</path>
+            <content>${TestStep_DataSource_ExcelFile_WHDataDriven#File_RemediationPlan}</content>
+            <allowWildcards>false</allowWildcards>
+            <ignoreNamspaceDifferences>false</ignoreNamspaceDifferences>
+            <ignoreComments>false</ignoreComments>
+          </con:configuration>
+        </con:assertion>
+        <con:credentials>
+          <con:username>_stassu_t</con:username>
+          <con:password>DYtO(eFL3P:Mby1maP.&lt;=;1VA</con:password>
+          <con:domain>WS</con:domain>
+          <con:selectedAuthProfile>Basic</con:selectedAuthProfile>
+          <con:addedBasicAuthenticationTypes>NTLM</con:addedBasicAuthenticationTypes>
+          <con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes>
+          <con:authType>Global HTTP Settings</con:authType>
+        </con:credentials>
+        <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+        <con:parameters/>
+        <con:environmentSpec>
+          <con:entry environmentId="2e64a7fa-ea0a-434c-b241-0f3eb30ba455">
+            <con:authProfile>Inherit From Parent</con:authProfile>
+          </con:entry>
+        </con:environmentSpec>
+      </con:restRequest>
+    </con:config>
+  </con:testStep>
+  <con:testStep type="datasourceloop" name="TestStep_DataSourceLOOP_ThruWHDataDrivenData" id="22eec510-886d-4b57-ae68-51177972b46d">
+    <con:settings/>
+    <con:config>
+      <dataSourceStep>TestStep_DataSource_ExcelFile_WHDataDriven</dataSourceStep>
+      <targetStep>TestStep_rqstPostGeneralRequirementStatusInquiry</targetStep>
+      <discardResults>false</discardResults>
+    </con:config>
+  </con:testStep>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:breakPoints>
+    <con:testStepId>9179a9ea-049a-4dee-bd53-b3a95beae553</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>4e22914b-0d38-4853-b6a0-ac73c545d9df</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:breakPoints>
+    <con:testStepId>22eec510-886d-4b57-ae68-51177972b46d</con:testStepId>
+    <con:status>NONE</con:status>
+    <con:properties/>
+  </con:breakPoints>
+  <con:environmentSpec>
+    <con:entry environmentId="2e64a7fa-ea0a-434c-b241-0f3eb30ba455">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testCase>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:interface xsi:type="con:RestService" id="4087cce4-4fe9-4c0d-bee6-5c0568029782" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://lafwasq:9448" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="4087cce4-4fe9-4c0d-bee6-5c0568029782fileName">https%3A%2F%2Flafwasq%3A9448</con:setting>
+  </con:settings>
+  <con:definitionCache type="TEXT" rootPart=""/>
+  <con:endpoints>
+    <con:endpoint>https://lafwasq:9448</con:endpoint>
+  </con:endpoints>
+  <con:environmentSpec>
+    <con:entry environmentId="2e64a7fa-ea0a-434c-b241-0f3eb30ba455">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:interface>

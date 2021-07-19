@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:testSuite id="0be02778-6a4c-44d6-9014-86d3eb1acb80" name="ts grl" xmlns:con="http://eviware.com/soapui/config">
+  <con:settings>
+    <con:setting id="0be02778-6a4c-44d6-9014-86d3eb1acb80fileName">ts-grl</con:setting>
+  </con:settings>
+  <con:savedRecentRuns>1</con:savedRecentRuns>
+  <con:runType>SEQUENTIAL</con:runType>
+  <con:properties/>
+  <con:reportParameters/>
+  <con:environmentSpec>
+    <con:entry environmentId="2e64a7fa-ea0a-434c-b241-0f3eb30ba455">
+      <con:authProfile>Inherit From Parent</con:authProfile>
+    </con:entry>
+  </con:environmentSpec>
+</con:testSuite>
